@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Survey Form</title>
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'form_app/css/style.css' %}" />
+</head>
+<body>
+<h1>Submitted Information</h1>
+<div id="user-info">
+    <p>Name: {{ request.session.name }} </p>
+    <p>Location: {{ request.session.location }} </p>
+    <p>Language: {{ request.session.language }} </p>
+    <p>Comments: {{ request.session.comments }} </p>
+</div>
+<a href="/form_app"><button>Go Back</button></a>
+
+
+</body>
+</html>

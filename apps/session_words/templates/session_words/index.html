@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Session Words</title>
+</head>
+
+<body>
+
+<h1>Add a New Word:</h1>
+
+<form action="/session_words/process" method="post">
+    {% csrf_token %}
+    <input type="text" name="word">
+    <br><br>
+
+    Choose color:
+    <br>
+    <input type="radio" name="color" value="red">Red
+    <br>
+    <input type="radio" name="color" value="green">Green
+    <br>
+    <input type="radio" name="color" value="blue">Blue
+    <br><br>
+
+    <input type="checkbox" name="size">show in BIG fonts!
+    <br><br>
+
+    <input type="submit" value="Add to Session">
+</form>
+<br>
+<hr>
+
+<div id="session">
+    <a href="/session_words/clear"><button>Clear Session</button></a>
+    <br><br>
+    <table style = "width: 80%; border:1px solid black; text-align: center">
+        <tr>
+            <th>Word</th>
+            <th>Date/Time Creation</th>
+        </tr>
+        {% for i in request.session.log %}
+        <tr>
+            <td style="color: {{i.color}}; font-size: {{i.size}}">{{ i.userword }}</td>
+            <td>{{ i.datetime }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+</body>
+</html>
